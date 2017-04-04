@@ -3,7 +3,6 @@
  */
 ;
 
-import initButtons from './initButtons';
 import initField from './initField';
 import Score from './Score';
 /**
@@ -30,7 +29,7 @@ function main():void
  * Конпка старт
  * @param content область поля
  */
-function Start(content:HTMLElement)
+function Start(content:HTMLElement): void
 {
     var startButton=document.getElementById('Start');
     if ( !startButton )
@@ -60,7 +59,7 @@ function Start(content:HTMLElement)
             }
         }
 	}
-    initButtons( startButton, onClick );
+    startButton.addEventListener( 'click', onClick );
 }
 /**
  * Процесс игры
@@ -136,7 +135,7 @@ function PlayGame(content:HTMLElement,buttonGroupName: string,step:HTMLElement):
 	}
 	for( let i = 0; i < buttons.length; i++ )
 	{
-		initButtons( buttons[i], onClick );
+		buttons[i].addEventListener( 'click', onClick );
 	}
 }
 /**
