@@ -4,7 +4,7 @@
 ;
 
 import initField from './initField';
-import Score from './Score';
+import Score from './score';
 /**
  * Ширина поля
  */
@@ -119,7 +119,19 @@ function PlayGame(content:HTMLElement,buttonGroupName: string,step:HTMLElement):
             }
             else
             {
-                alert('Game over');
+                let result=Score();
+                if(result=='draw')
+                {
+                    alert(result);
+                }
+                else if(result=='')
+                {
+                    return;
+                }
+                else
+                {
+                    alert('Win '+result);
+                }
                 if(content.firstChild!=undefined)
                 {
                     while (content.lastChild) {
