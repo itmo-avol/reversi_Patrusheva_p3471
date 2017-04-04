@@ -5,6 +5,7 @@
 
 import initButtons from './initButtons';
 import initField from './initField';
+import Score from './Score';
 /**
  * Ширина поля
  */
@@ -53,9 +54,11 @@ function Start(content:HTMLElement)
 		}
         if(Field==0)
         {
+            target.style.display='none';
             Field=1;
             initField(content,width,height);
             PlayGame('circle');
+            Score();
         }
 	}
     initButtons( startButton, onClick );
@@ -86,6 +89,7 @@ function PlayGame(buttonGroupName: string):void
             {
                 MakeMove('black',buttons,target);
                 MakeMove('white',buttons,target);
+                Score();
             }
 	}
 	for( let i = 0; i < buttons.length; i++ )

@@ -14,7 +14,7 @@ function main(content:HTMLElement,width:number,height:number)
         for(let j = 0;j < width;j++)
         {
             var td=tr.insertCell();
-            var cell=document.createElement('button')
+            var cell=document.createElement('div')
             cell.setAttribute('class','circle');
             cell.id=i+' '+j;
                if(i==j && (i==height/2 || i==height/2-1))
@@ -32,10 +32,25 @@ function main(content:HTMLElement,width:number,height:number)
         }
     }
     content.appendChild(table);
+
+    var div=document.createElement('div');
+    var div1=document.createElement('div');
+    var div2=document.createElement('div');
+    var text1=document.createElement('p');
+    var text2=document.createElement('p');
+    text1.innerHTML='White:';
+    text2.innerHTML='Black:';
     var white=document.createElement('p');
     var black=document.createElement('p');
-    content.appendChild(white);
-    content.appendChild(black);
+    white.setAttribute('id','white');
+    black.setAttribute('id','black');
+    div1.appendChild(text1);
+    div2.appendChild(text2); 
+    div1.appendChild(white);
+    div2.appendChild(black); 
+    div.appendChild(div1); 
+    div.appendChild(div2);
+    content.appendChild(div);
 }
 
 /**
