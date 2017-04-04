@@ -15,10 +15,6 @@ const width=8;
  */
 const height=8;
 /**
- * Состояние поля
- */
-var Field=0;
-/**
  * запускаем игру
  */
 function main():void
@@ -26,7 +22,7 @@ function main():void
     var content=document.getElementById('content') as HTMLAnchorElement; 
     var startButton=document.createElement('button');
         startButton.setAttribute('id','Start');
-        startButton.innerHTML='Start';
+        startButton.textContent='Start';
         content.appendChild(startButton);
     Start(content);
 }
@@ -52,10 +48,9 @@ function Start(content:HTMLElement)
 		{
 			return;
 		}
-        if(Field==0)
+        if(target.style.display!='none')
         {
             target.style.display='none';
-            Field=1;
             initField(content,width,height);
             let step=document.getElementById('step');
             if(step)
@@ -74,8 +69,7 @@ function Start(content:HTMLElement)
 function PlayGame(content:HTMLElement,buttonGroupName: string,step:HTMLElement):void
 {
     const buttons = document.getElementsByClassName( buttonGroupName ) as NodeListOf<Element>;
-    let w=0;
-    let b=0;
+    let blackStep=true;
     if ( !buttons )
 	{
 		return;
@@ -95,35 +89,31 @@ function PlayGame(content:HTMLElement,buttonGroupName: string,step:HTMLElement):
                 }
                 else
                 {
-                    if(chekForMove('black',buttons) && b==0)
+                    if(chekForMove('black',buttons) && blackStep==true)
                     {
-                        if(MakeMove('black',target))
+                        if(makeMove('black',target))
                         {
-                            step.innerHTML='White Play';
-                            b=1;
-                            w=0;
+                            step.textContent='White Play';
+                            blackStep=false;
                         }
                     }
                     else
                     {
-                        step.innerHTML='White Play';
-                        b=1;
-                        w=0;
+                        step.textContent='White Play';
+                        blackStep=false;
                     }
-                    if(chekForMove('white',buttons) && w==0)
+                    if(chekForMove('white',buttons) && blackStep==false)
                     {
-                        if(MakeMove('white',target))
+                        if(makeMove('white',target))
                         {
-                            step.innerHTML='Black Play';
-                            b=0;
-                            w=1;
+                            step.textContent='Black Play';
+                            blackStep=true;
                         }
                     }
                     else
                     {
-                        step.innerHTML='Black Play';
-                        b=0;
-                        w=1;
+                        step.textContent='Black Play';
+                        blackStep=true;
                     }
                     Score();
                 }
@@ -131,7 +121,6 @@ function PlayGame(content:HTMLElement,buttonGroupName: string,step:HTMLElement):
             else
             {
                 alert('Game over');
-                Field=0;
                 if(content.firstChild!=undefined)
                 {
                     while (content.lastChild) {
@@ -140,7 +129,7 @@ function PlayGame(content:HTMLElement,buttonGroupName: string,step:HTMLElement):
                 }
                 var startButton=document.createElement('button');
                 startButton.setAttribute('id','Start');
-                startButton.innerHTML='Start';
+                startButton.textContent='Start';
                 content.appendChild(startButton);
                 Start(content);
             }
@@ -151,12 +140,12 @@ function PlayGame(content:HTMLElement,buttonGroupName: string,step:HTMLElement):
 	}
 }
 /**
- * 
+ * делаем ход
  * @param color Цвет
  * @param buttons Поле
  * @param target 
  */
-function MakeMove(color:string,target:HTMLInputElement):boolean
+function makeMove(color:string,target:HTMLInputElement):boolean
 {
     if(checkForMoveForOneChip(color,target))
     {

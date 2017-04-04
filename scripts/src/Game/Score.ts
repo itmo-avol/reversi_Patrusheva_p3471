@@ -24,8 +24,8 @@ function main()
             scoreB++;
         }
 	}
-    white.innerHTML=''+scoreW;
-    black.innerHTML=''+scoreB;
+    white.textContent=''+scoreW;
+    black.textContent=''+scoreB;
 }
 
 /**

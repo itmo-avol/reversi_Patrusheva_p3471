@@ -38,7 +38,7 @@ function main(content:HTMLElement,width:number,height:number)
 
     var text=document.createElement('p');
     text.setAttribute('id','step');
-    text.innerHTML='Black Play';
+    text.textContent='Black Play';
     content.appendChild(text);
 
     var div=document.createElement('div');
@@ -46,8 +46,8 @@ function main(content:HTMLElement,width:number,height:number)
     var div2=document.createElement('div');
     var text1=document.createElement('p');
     var text2=document.createElement('p');
-    text1.innerHTML='White:';
-    text2.innerHTML='Black:';
+    text1.textContent='White:';
+    text2.textContent='Black:';
     var white=document.createElement('p');
     var black=document.createElement('p');
     white.setAttribute('id','white');
