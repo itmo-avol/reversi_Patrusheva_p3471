@@ -17,12 +17,15 @@ function main(content:HTMLElement,width:number,height:number)
             var cell=document.createElement('div')
             cell.setAttribute('class','circle');
             cell.id=i+' '+j;
-               if(i==j && (i==height/2 || i==height/2-1))
+            if(i==j && (i==height/2 || i==height/2-1))
             {
-            cell.style.background='white';
-            } else if(i==height/2 &&  j==width/2-1 || i==height/2-1 && j==width/2)
+                cell.style.background='white';
+                cell.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.5)';
+            } 
+            else if(i==height/2 &&  j==width/2-1 || i==height/2-1 && j==width/2)
             {
                 cell.style.background='black';
+                cell.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.5)';
             }
             else
             {
@@ -32,6 +35,11 @@ function main(content:HTMLElement,width:number,height:number)
         }
     }
     content.appendChild(table);
+
+    var text=document.createElement('p');
+    text.setAttribute('id','step');
+    text.innerHTML='Black Play';
+    content.appendChild(text);
 
     var div=document.createElement('div');
     var div1=document.createElement('div');
