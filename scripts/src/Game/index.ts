@@ -9,11 +9,11 @@ import Score from './Score';
 /**
  * Ширина поля
  */
-const width=4;
+const width=8;
 /**
  * Высота поля
  */
-const height=4;
+const height=8;
 /**
  * Состояние поля
  */
