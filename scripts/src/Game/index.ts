@@ -108,6 +108,7 @@ function PlayGame(content:HTMLElement,buttonGroupName: string):void
                 startButton.setAttribute('id','Start');
                 startButton.innerHTML='Start';
                 content.appendChild(startButton);
+                Start(content);
             }
 	}
 	for( let i = 0; i < buttons.length; i++ )
