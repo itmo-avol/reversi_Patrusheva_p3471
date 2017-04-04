@@ -57,7 +57,7 @@ function Start(content:HTMLElement)
             target.style.display='none';
             Field=1;
             initField(content,width,height);
-            PlayGame('circle');
+            PlayGame(content,'circle');
             Score();
         }
 	}
@@ -67,7 +67,7 @@ function Start(content:HTMLElement)
  * Процесс игры
  * @param кнопки
  */
-function PlayGame(buttonGroupName: string):void
+function PlayGame(content:HTMLElement,buttonGroupName: string):void
 {
     const buttons = document.getElementsByClassName( buttonGroupName ) as NodeListOf<Element>;
     if ( !buttons )
@@ -80,16 +80,34 @@ function PlayGame(buttonGroupName: string):void
             {
                  return;
             }
-            const target = event.target as HTMLInputElement;
-            if ( target.style.background == 'black' || target.style.background == 'white')
+            if(chekForMove('black',buttons) || chekForMove('white',buttons))
             {
-                return;
+                const target = event.target as HTMLInputElement;
+                if ( target.style.background == 'black' || target.style.background == 'white')
+                {
+                    return;
+                }
+                else
+                {
+                    MakeMove('black',buttons,target);
+                    MakeMove('white',buttons,target);
+                    Score();
+                }
             }
             else
             {
-                MakeMove('black',buttons,target);
-                MakeMove('white',buttons,target);
-                Score();
+                alert('The end');
+                Field=0;
+                if(content.firstChild!=undefined)
+                {
+                    while (content.lastChild) {
+                        content.removeChild(content.lastChild);
+                    }
+                }
+                var startButton=document.createElement('button');
+                startButton.setAttribute('id','Start');
+                startButton.innerHTML='Start';
+                content.appendChild(startButton);
             }
 	}
 	for( let i = 0; i < buttons.length; i++ )
