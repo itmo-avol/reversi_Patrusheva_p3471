@@ -1,0 +1,28 @@
+body{
+    margin: 0 auto;
+    text-align: center;
+}
+table
+{
+    margin: 0 auto;
+    background-color: limegreen;
+    border: solid 1px white;
+}
+tr
+{
+    width: 50px;
+}
+td
+{
+    width: inherit;
+    height: 50px;
+
+    border: solid 1px white
+}
+.circle{
+    margin: 0 auto;
+    border-radius: 100%;
+    border-style: none;
+    width: 90%;
+    height: 90%;
+}

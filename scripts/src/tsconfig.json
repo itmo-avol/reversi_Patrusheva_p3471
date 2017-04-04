@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "target": "es5",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+		"noImplicitThis": true,
+		"strictNullChecks": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmitOnError": true,
+		"removeComments": true,
+        "outDir": "../build",
+        "sourceMap": false
+    },
+    "files": [
+		"index.ts"
+	]
+}

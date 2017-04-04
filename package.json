@@ -1,0 +1,16 @@
+{
+  "name": "reversi",
+  "version": "1.0.0",
+  "description": "Reversi/Othello",
+  "main": "index.js",
+  "dependencies": { },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrusheva Alina p3471",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "0.0.2",
+    "typescript": "^2.1.5"
+  }
+}
